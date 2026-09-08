@@ -304,6 +304,18 @@ html,body{opacity:1!important;visibility:visible!important}
 /* CTA button under the cards was left-aligned (sits outside any flex container); center it */
 .elementor-element-b4a01e0{margin-left:auto !important;margin-right:auto !important;}
 /* Mobile: all 4 category cards stacked vertically so every area is visible without swiping */
+/* Mobile: show 9 cards by default (category 1 complete + first 4 of category 2), rest behind "Ver mais áreas" */
+@media(max-width:767px){
+.elementor-element-29469b2 .swiper-wrapper > .swiper-slide:nth-child(2) > div > div:nth-child(5),
+.elementor-element-29469b2 .swiper-wrapper > .swiper-slide:nth-child(3),
+.elementor-element-29469b2 .swiper-wrapper > .swiper-slide:nth-child(4){display:none;}
+body.tf-areas-expanded .elementor-element-29469b2 .swiper-wrapper > .swiper-slide:nth-child(2) > div > div:nth-child(5),
+body.tf-areas-expanded .elementor-element-29469b2 .swiper-wrapper > .swiper-slide:nth-child(3),
+body.tf-areas-expanded .elementor-element-29469b2 .swiper-wrapper > .swiper-slide:nth-child(4){display:flex;}
+.tf-areas-more-btn{display:block;width:100%;text-align:center;background:none;border:1px solid #F0E0C7;color:#F0E0C7;border-radius:100px;padding:12px 20px;font-family:"Raleway",sans-serif;font-size:15px;font-weight:500;margin:15px 0 0;cursor:pointer;}
+body.tf-areas-expanded .tf-areas-more-btn{display:none;}
+}
+@media(min-width:768px){.tf-areas-more-btn{display:none;}}
 </style>
 <div class="elementor-element elementor-element-29469b2 atomik-entrada-13 elementor-widget-tablet__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-n-carousel e-widget-swiper" data-e-type="widget" data-element_type="widget" data-id="29469b2" data-settings='{"carousel_items":[{"slide_title":"Slide #1","_id":"ca558a0"},{"slide_title":"Slide #2","_id":"502bc90"},{"slide_title":"Slide #3","_id":"84141b3"},{"slide_title":"Slide #4","_id":"9fed361"}],"arrows":"no","slides_to_show":"4","slides_to_show_tablet":"2","slides_to_show_mobile":"1","speed":500,"image_spacing_custom":{"unit":"px","size":10,"sizes":[]},"image_spacing_custom_widescreen":{"unit":"px","size":"","sizes":[]},"image_spacing_custom_tablet":{"unit":"px","size":"","sizes":[]},"image_spacing_custom_mobile":{"unit":"px","size":"","sizes":[]}}' data-widget_type="nested-carousel.default">
 <div class="elementor-widget-container">
@@ -388,6 +400,7 @@ html,body{opacity:1!important;visibility:visible!important}
 <span aria-atomic="true" aria-live="assertive" class="swiper-notification"></span></div>
 </div>
 </div>
+<button class="tf-areas-more-btn" onclick="document.body.classList.add('tf-areas-expanded');this.blur();" type="button">Ver mais áreas</button>
 <a class="elementor-element elementor-element-b4a01e0 e-con e-atomic-element e-flexbox-base e-b4a01e0-f76b88f atomik-entrada-12" data-e-type="e-flexbox" data-element_type="e-flexbox" data-id="b4a01e0" data-interaction-id="b4a01e0" href="https://api.whatsapp.com/send?phone=5531993289504&amp;text=Ol%C3%A1!%20Em%20que%20posso%20te%20ajudar%3F%20" target="_blank">
 <p class="e-4f575f4-da0514e e-paragraph-base" data-e-type="widget" data-id="4f575f4" data-interaction-id="4f575f4">Agende sua conversa</p>
 <div class="elementor-element elementor-element-24ffa13 e-con e-atomic-element e-flexbox-base e-24ffa13-241ff1a" data-e-type="e-flexbox" data-element_type="e-flexbox" data-id="24ffa13" data-interaction-id="24ffa13">
