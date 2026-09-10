@@ -1,4 +1,4 @@
-const { checkPassword, createSessionCookie } = require('../_lib/auth');
+const { checkCredentials, createSessionCookie } = require('../_lib/auth');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -9,9 +9,9 @@ module.exports = async (req, res) => {
   if (!body || typeof body === 'string') {
     try { body = JSON.parse(body || '{}'); } catch { body = {}; }
   }
-  const { password } = body || {};
-  if (!checkPassword(password)) {
-    res.status(401).json({ error: 'Senha incorreta.' });
+  const { email, password } = body || {};
+  if (!checkCredentials(email, password)) {
+    res.status(401).json({ error: 'E-mail ou senha incorretos.' });
     return;
   }
   res.setHeader('Set-Cookie', createSessionCookie());

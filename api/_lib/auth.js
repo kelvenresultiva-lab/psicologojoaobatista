@@ -53,13 +53,24 @@ function isAuthenticated(req) {
   }
 }
 
-function checkPassword(password) {
-  const expected = process.env.ADMIN_PASSWORD;
-  if (!expected || typeof password !== 'string') return false;
-  const a = Buffer.from(password);
+function safeEqual(value, expected) {
+  if (!expected || typeof value !== 'string') return false;
+  const a = Buffer.from(value);
   const b = Buffer.from(expected);
   if (a.length !== b.length) return false;
   return crypto.timingSafeEqual(a, b);
+}
+
+function checkPassword(password) {
+  return safeEqual(password, process.env.ADMIN_PASSWORD);
+}
+
+function checkCredentials(email, password) {
+  const emailOk = safeEqual(
+    String(email || '').trim().toLowerCase(),
+    String(process.env.ADMIN_EMAIL || '').trim().toLowerCase()
+  );
+  return emailOk && checkPassword(password);
 }
 
 function requireAuth(req, res) {
@@ -76,6 +87,7 @@ module.exports = {
   clearSessionCookie,
   isAuthenticated,
   checkPassword,
+  checkCredentials,
   requireAuth,
   parseCookies,
 };
